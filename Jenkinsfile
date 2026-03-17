@@ -38,6 +38,13 @@ pipeline {
         stage("CheckStyle") {
                 steps {
                     sh "./gradlew checkstyleMain"
+                    publishHTML(target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: 'build/reports/checkstyle',
+                        reportFiles: 'index.html',
+                        reportName: 'CheckStyle Report'
             }
         }
     }
