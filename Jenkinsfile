@@ -45,6 +45,7 @@ pipeline {
                         reportDir: 'build/reports/checkstyle',
                         reportFiles: 'index.html',
                         reportName: 'CheckStyle Report'
+                    ])
             }
         }
     }
