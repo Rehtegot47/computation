@@ -49,4 +49,12 @@ pipeline {
             }
         }
     }
+    post {
+            always {
+                mail to: 'codeble101@gmail.com',
+                     subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
+                     body: "Your build completed check : ${env.BUILD_URL}"
+                     slackSend channel: "#all-rehtegot47" color: "good", message: "The message is pulchritudous"
+            }
+        }
 }
