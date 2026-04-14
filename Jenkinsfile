@@ -1,6 +1,7 @@
 pipeline {
-    agent any
-
+    agent {
+            label "Permanent"
+    }
     stages {
         stage('Checkout') {
             steps {
