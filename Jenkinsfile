@@ -9,21 +9,21 @@ pipeline {
         }
         stage("Compiles") {
                 steps {
-                    sh "chmod +x gradlew"
-                    sh "java -version"
-                    sh "./gradlew --version"
-                    sh "./gradlew clean"
-                    sh "./gradlew compileJava"
+                    bat "chmod +x gradlew"
+                    bat "java -version"
+                    bat "./gradlew --version"
+                    bat "./gradlew clean"
+                    bat "./gradlew compileJava"
             }
         }
         stage("Test") {
                 steps {
-                    sh "./gradlew test"
+                    bat "./gradlew test"
             }
         }
         stage("Code Coverage") {
             steps {
-                sh "./gradlew jacocoTestReport"
+                bat "./gradlew jacocoTestReport"
                 publishHTML(target: [
                     allowMissing: false,
                     alwaysLinkToLastBuild: false,
@@ -32,12 +32,12 @@ pipeline {
                     reportFiles: 'index.html',
                     reportName: 'JaCoCo Report'
                 ])
-                sh "./gradlew jacocoTestCoverageVerification"
+                bat "./gradlew jacocoTestCoverageVerification"
             }
         }
         stage("CheckStyle") {
                 steps {
-                    sh "./gradlew checkstyleMain"
+                    bat "./gradlew checkstyleMain"
                     publishHTML(target: [
                         allowMissing: false,
                         alwaysLinkToLastBuild: false,
